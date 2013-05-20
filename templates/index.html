@@ -1,0 +1,37 @@
+{% extends "_layouts/base.html" %}
+{% load url from future %}
+
+{% block page_title %}Welcome to {% endblock %}
+{% block page_header %}Welcome {% endblock %}
+
+{% block extra_style %}
+.thumbnails li{ line-height:20px; }
+.thumbnails {
+  margin:auto;
+}
+{% endblock %}
+
+{% block page_content %}
+<div class="page-header">
+  <h2>This Week</h2>
+</div>
+  {% for movie in all_movies %}
+  <ul class="thumbnails">
+    {% if movie.published %}
+      <li class="span5">
+      <a href="{{ movie.slug }}" class="thumbnail">
+        <img data-src="holder.js/300x200" style="width: 300px; height: 200px;" src="{{ MEDIA_URL }}{{ movie.photo }}">
+      </a>
+      <li class="span6">
+        <h3>{{ movie.title }}</h3>
+        <p>{{ movie.description|slice:'200'|linebreaks }}</p>
+        <p>
+          <a class="btn btn-primary" href="#">Buy</a>
+          <a class="btn" href="#">Checkout</a>
+        </p>
+        </li>
+      </li>
+    {% endif %}
+</ul>
+  {% endfor %}
+{% endblock %}
