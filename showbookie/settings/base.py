@@ -92,6 +92,7 @@ DJANGO_APPS = (
 
 LOCAL_APPS = (
     'movies',
+    'profiles',
 )
 
 THIRD_PARTY_APPS = (
