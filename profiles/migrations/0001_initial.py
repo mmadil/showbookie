@@ -12,6 +12,7 @@ class Migration(SchemaMigration):
         db.create_table('profiles_userprofile', (
             ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
             ('user', self.gf('django.db.models.fields.related.OneToOneField')(to=orm['auth.User'], unique=True)),
+            ('profile_picture', self.gf('django.db.models.fields.files.ImageField')(max_length=100, blank=True)),
             ('bio', self.gf('django.db.models.fields.TextField')(default='', blank=True)),
             ('facebook', self.gf('django.db.models.fields.CharField')(default='', max_length=30, blank=True)),
             ('twitter', self.gf('django.db.models.fields.CharField')(default='', max_length=30, blank=True)),
@@ -66,6 +67,7 @@ class Migration(SchemaMigration):
             'bio': ('django.db.models.fields.TextField', [], {'default': "''", 'blank': 'True'}),
             'facebook': ('django.db.models.fields.CharField', [], {'default': "''", 'max_length': '30', 'blank': 'True'}),
             'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
+            'profile_picture': ('django.db.models.fields.files.ImageField', [], {'max_length': '100', 'blank': 'True'}),
             'twitter': ('django.db.models.fields.CharField', [], {'default': "''", 'max_length': '30', 'blank': 'True'}),
             'user': ('django.db.models.fields.related.OneToOneField', [], {'to': "orm['auth.User']", 'unique': 'True'})
         }
