@@ -1,5 +1,6 @@
 {% extends "_layouts/base.html" %}
 {% load url from future %}
+{% load comments %}
 
 {% block page_title %} {{ movie.title }} {% endblock %}
 {% block page_header %} Details{% endblock %}
@@ -14,4 +15,15 @@ Number of seats left :<h3> {{ movie.seats }}</h3>
 Starting from : <h3>{{ movie.start_date }}</h3>
 Ending on : <h3>{{ movie.end_date}}</h3>
 <a class="btn btn-primary btn-large pull-right" href="#">Buy Tickets</a>
+{% get_comment_count for movie as comment_count %}
+<p>This movie {{ comment_count }} reviews.</p>
+{% render_comment_list for movie %}
+
+{% if user.is_authenticated %}
+{% get_comment_form for movie as form %}
+  <form action="{% comment_form_target %}" method="post">
+    {% csrf_token %}
+      {{ form }}
+      <button class="btn btn-primary" type="submit"><i class="icon-comment"></i> Submit</button>
+{% endif %}
 {% endblock %}
