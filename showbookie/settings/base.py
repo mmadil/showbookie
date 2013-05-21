@@ -20,6 +20,8 @@ MANAGERS = ADMINS
 
 ALLOWED_HOSTS = []
 
+REGISTRATION_OPEN = True
+
 TIME_ZONE = 'Asia/Kolkata'
 LANGUAGE_CODE = 'en-us'
 SITE_ID = 1
@@ -99,6 +101,7 @@ LOCAL_APPS = (
 
 THIRD_PARTY_APPS = (
     'south',
+    'registration',
 )
 
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
