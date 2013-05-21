@@ -102,6 +102,7 @@ LOCAL_APPS = (
 THIRD_PARTY_APPS = (
     'south',
     'registration',
+    'djangoratings',
 )
 
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
