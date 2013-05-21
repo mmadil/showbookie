@@ -1,0 +1,11 @@
+{% extends "_layouts/base.html" %}
+{% load url from future %}
+
+{% block page_title %} Login | {% endblock %}
+{% block page_header %} Login {% endblock %}
+
+{% block page_content %}
+<form action="" method="post">
+ {% include 'base_form.html' %}
+<button class="btn btn-primary" type="submit"><i class="icon-signin"></i> Login</button>
+{% endblock %}
