@@ -19,7 +19,7 @@
   <ul class="thumbnails">
     {% if movie.published %}
       <li class="span5">
-      <a href="movies/{{ movie.slug }}" class="thumbnail">
+      <a href="{{ movie.get_absolute_url }}" class="thumbnail">
         <img data-src="holder.js/300x200" style="width: 300px; height: 200px;" src="{{ MEDIA_URL }}{{ movie.photo }}">
       </a>
       <li class="span6">
@@ -27,7 +27,7 @@
         <p>{{ movie.description|slice:'200'|linebreaks }}</p>
         <p>
           <a class="btn btn-primary" href="#">Buy Tickets</a>
-          <a class="btn" href="movies/{{ movie.slug }}">Checkout</a>
+          <a class="btn" href="{{ movie.get_absolute_url }}">Checkout</a>
         </p>
         </li>
       </li>

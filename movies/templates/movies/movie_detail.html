@@ -5,7 +5,7 @@
 {% block page_header %} Details{% endblock %}
 {% block page_content %}
 <div class="page-header">
-  <h3> {{ movie.title }} </h3>
+  <h3> <a href="{{ movie.get_absolute_url }}">{{ movie.title }}</a></h3>
 </div>
 <img class="thumbnail" data-src="holder.js/360x270" src="{{ MEDIA_URL }}{{ movie.photo }}">
 <p>{{ movie.description|linebreaks }}</p>
