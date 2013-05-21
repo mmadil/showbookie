@@ -1,3 +1,11 @@
 from django.db import models
 
-# Create your models here.
+class Pricing(models.Model):
+    price = models.PositiveIntegerField()
+
+    def __unicode__(self):
+        return str(self.price)
+
+class Purchase(models.Model):
+    price = models.ManyToManyField(Pricing)
+

@@ -10,5 +10,5 @@ from . import views
 urlpatterns = patterns('',
     url(r'^$', views.HomepageView.as_view(), name='home'),
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^', include('movies.urls', namespace='movie')),
+    url(r'^movies/', include('movies.urls', namespace='movie')),
 ) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

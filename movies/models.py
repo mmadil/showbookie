@@ -19,6 +19,8 @@ class Movie(models.Model):
     end_date = models.DateTimeField()
     timings = models.ManyToManyField(Timing)
 
+    # To add ratings using Django Ratings.
+
     class Meta:
         ordering = ['-start_date','title']
 
