@@ -1,6 +1,8 @@
 from django.db import models
 from django.template.defaultfilters import slugify
 
+from djangoratings.fields import RatingField
+
 class Timing(models.Model):
     time = models.TimeField()
 
@@ -18,6 +20,8 @@ class Movie(models.Model):
     start_date = models.DateTimeField()
     end_date = models.DateTimeField()
     timings = models.ManyToManyField(Timing)
+    user_rating = RatingField(range=5, can_change_vote=True, allow_anonymous=False, use_cookies=True, allow_delete=True)
+    anon_rating = RatingField(range=5, weight=10, can_change_vote=False, allow_anonymous=True, use_cookies=False)
 
     # To add ratings using Django Ratings.
 

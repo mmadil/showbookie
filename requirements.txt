@@ -6,6 +6,7 @@ distribute==0.6.31
 dj-database-url==0.2.1
 django-admin-bootstrapped==0.3.2
 django-debug-toolbar==0.9.4
+django-ratings==0.3.7
 gunicorn==0.17.2
 ipython==0.13.2
 psycopg2==2.4.6
