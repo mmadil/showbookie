@@ -1,11 +1,10 @@
-{% extends "_layouts/base.html" %}
-{% load url from future %}
-
-{% block page_title %} Registration | {% endblock %}
-{% block page_header %} Register {% endblock %}
-
-{% block page_content %}
-<form action="" method="post">
- {% include 'base_form.html' %}
-<button class="btn btn-primary" type="submit"><i class="icon-unlock"></i> Register</button>
+{% extends "registration/registration_base.html" %}
+{% block title %}Register for an account{% endblock %}
+{% block content %}
+<table>
+    <form method='post' action=''>{% csrf_token %}
+        {{ form }}
+        <tr><td></td><td><input type="submit" value="Send activation email" /></td>
+    </form>
+</table>
 {% endblock %}

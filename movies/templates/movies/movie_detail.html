@@ -21,9 +21,12 @@ Ending on : <h3>{{ movie.end_date}}</h3>
 
 {% if user.is_authenticated %}
 {% get_comment_form for movie as form %}
-  <form action="{% comment_form_target %}" method="post">
+  <form action="" method="post">
     {% csrf_token %}
       {{ form }}
       <button class="btn btn-primary" type="submit"><i class="icon-comment"></i> Submit</button>
+  </form>
+  {% else %}
+    <p>Please <a href="{% url 'auth_login' %}"></p>
 {% endif %}
 {% endblock %}

@@ -1,11 +1,26 @@
-{% extends "_layouts/base.html" %}
-{% load url from future %}
+{% extends "registration/registration_base.html" %}
+{% block title %}Login{% endblock %}
+{% block content %}
 
-{% block page_title %} Login | {% endblock %}
-{% block page_header %} Login {% endblock %}
+{% if form.errors %}
+<p>Your username and password didn't match. Please try again.</p>
+{% endif %}
 
-{% block page_content %}
-<form action="" method="post">
- {% include 'base_form.html' %}
-<button class="btn btn-primary" type="submit"><i class="icon-signin"></i> Login</button>
+<form method="post" action="{% url django.contrib.auth.views.login %}">{% csrf_token %}
+<table>
+<tr>
+    <td>{{ form.username.label_tag }}</td>
+    <td>{{ form.username }}</td>
+</tr>
+<tr>
+    <td>{{ form.password.label_tag }}</td>
+    <td>{{ form.password }}</td>
+</tr>
+</table>
+<p><a href="{% url auth_password_reset %}">Forgot</a> your password?  <a href="{% url registration_register %}">Need an account</a>?</p>
+
+<input type="submit" value="login" />
+<input type="hidden" name="next" value="{{ next }}" />
+</form>
+
 {% endblock %}

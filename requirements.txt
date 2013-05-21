@@ -1,4 +1,4 @@
-Django==1.5.1
+Django==1.4.5
 PIL==1.1.7
 South==0.7.6
 argparse==1.2.1
@@ -6,7 +6,8 @@ distribute==0.6.31
 dj-database-url==0.2.1
 django-bootstrap-forms==0.1
 django-ratings==0.3.7
-django-registration==0.8
+django-registration==0.8-alpha-1
+-e git://github.com/yourcelf/django-registration-defaults.git@4462a56774636f1baaa00d688db1ad0bfdb741b9#egg=django_registration_defaults-dev
 gunicorn==0.17.2
 ipython==0.13.2
 psycopg2==2.4.6
