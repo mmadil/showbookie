@@ -23,6 +23,8 @@ MANAGERS = ADMINS
 
 ALLOWED_HOSTS = []
 
+COMMENTS_HIDE_REMOVED = True
+
 REGISTRATION_OPEN = True
 
 TIME_ZONE = 'Asia/Kolkata'
@@ -101,6 +103,7 @@ DJANGO_APPS = (
 
 LOCAL_APPS = (
     'movies',
+    'reviews',
     'profiles',
 )
 
@@ -110,7 +113,9 @@ THIRD_PARTY_APPS = (
     'djangoratings',
 )
 
-INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
+COMMENTS_APP = 'reviews'
+
+INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS 
 
 # A sample logging configuration. The only tangible logging
 # performed by this configuration is to send an email to

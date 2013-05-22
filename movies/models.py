@@ -1,6 +1,7 @@
 from django.db import models
 from django.template.defaultfilters import slugify
 
+from django.contrib.comments.moderation import CommentModerator, moderator
 from djangoratings.fields import RatingField
 
 class Timing(models.Model):
@@ -20,6 +21,7 @@ class Movie(models.Model):
     start_date = models.DateTimeField()
     end_date = models.DateTimeField()
     timings = models.ManyToManyField(Timing)
+    enable_comments = models.BooleanField(default=True)
     user_rating = RatingField(range=5, can_change_vote=True, allow_anonymous=False, use_cookies=True, allow_delete=True)
     anon_rating = RatingField(range=5, weight=10, can_change_vote=False, allow_anonymous=True, use_cookies=False)
 
@@ -39,3 +41,10 @@ class Movie(models.Model):
     @models.permalink
     def get_absolute_url(self):
         return("movies:detail", (), {"slug":self.slug})
+
+
+#class MovieCommentModerator(CommentModerator):
+#    email_notification = False
+#    auto_close_field = "start_date"
+#    close_after = 31
+
