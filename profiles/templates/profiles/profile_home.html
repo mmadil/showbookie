@@ -1,0 +1,9 @@
+{% extends "_layouts/base.html" %}
+{% load url from future %}
+
+{% block page_title %} {{ userinfo.get_full_name }} {% endblock %}
+{% block page_header %} {{ user.name }}{% endblock %}
+
+{% block content %}
+ Content here.
+{% endblock %}

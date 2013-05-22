@@ -12,5 +12,6 @@ urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
     url(r'^comments/', include('django.contrib.comments.urls')),
     url(r'^accounts/', include('registration.backends.simple.urls')),
+    url(r'^accounts/profile/', include('profiles.urls', namespace='profiles')),
     url(r'^movies/', include('movies.urls', namespace='movies')),
 ) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
