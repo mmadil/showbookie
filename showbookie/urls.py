@@ -11,6 +11,6 @@ urlpatterns = patterns('',
     url(r'^$', views.HomepageView.as_view(), name='home'),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^comments/', include('django.contrib.comments.urls')),
-    url(r'^accounts/', include('registration.backends.default.urls')),
+    url(r'^accounts/', include('registration.backends.simple.urls')),
     url(r'^movies/', include('movies.urls', namespace='movies')),
 ) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
