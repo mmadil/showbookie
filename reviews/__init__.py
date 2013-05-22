@@ -1,8 +1,8 @@
-from .models import CustomCommentManager
-from .forms import CustomCommentFormManager
+from .models import UserExperience
+from .forms import UserExperienceForm
 
 def get_model():
-    return CustomCommentManager()
+    return UserExperience
 
 def get_form():
-    return CustomCommentFormManager()
+    return UserExperienceForm

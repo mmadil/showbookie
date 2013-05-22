@@ -1,5 +1,6 @@
 {% extends "_layouts/base.html" %}
 {% load url from future %}
+{% load comments %}
 
 {% block page_title %} {{ movie.title }} {% endblock %}
 {% block page_header %} Details{% endblock %}
@@ -15,4 +16,13 @@ Starting from : <h3>{{ movie.start_date }}</h3>
 Ending on : <h3>{{ movie.end_date}}</h3>
 <a class="btn btn-primary btn-large" href="#">Buy Tickets</a>
 <hr>
+{% get_comment_count for movie as comment_count %}
+<p>This movie has {{ comment_count }} reviews.</p>
+{% render_comment_list for movie %}
+{% get_comment_list for movie as comment_list %}
+{% for comment in comment_list %}
+  <p> {{ comment.user_name }} says </p>
+  <p> {{ comment.comment }} </p>
+  <p> at {{ comment.submit_date }}
+{% endfor %}
 {% endblock %}

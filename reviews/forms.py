@@ -1,14 +1,14 @@
 from django import forms
 from django.contrib.comments.forms import CommentForm
-from .models import CustomCommentManager
+from .models import UserExperience
 
-class CustomCommentFormManager(CommentForm):
+class UserExperienceForm(CommentForm):
     experience = forms.CharField(max_length=20)
 
     def get_comment_model(self):
-        return CustomCommentManager
+        return UserExperience
 
     def get_comment_create_data(self):
-        data = super(CustomCommentFormManager, self).get_comment_create_data()
+        data = super(UserExperienceForm, self).get_comment_create_data()
         data['title'] = self.cleaned_data['title']
         return data

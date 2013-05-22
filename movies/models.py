@@ -43,8 +43,9 @@ class Movie(models.Model):
         return("movies:detail", (), {"slug":self.slug})
 
 
-#class MovieCommentModerator(CommentModerator):
-#    email_notification = False
-#    auto_close_field = "start_date"
-#    close_after = 31
+class MovieCommentModerator(CommentModerator):
+    email_notification = False
+    auto_close_field = "start_date"
+    close_after = 31
 
+moderator.register(Movie, MovieCommentModerator)

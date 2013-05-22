@@ -110,7 +110,7 @@ LOCAL_APPS = (
 THIRD_PARTY_APPS = (
     'south',
     'registration',
-    'djangoratings',
+#    'djangoratings',
 )
 
 COMMENTS_APP = 'reviews'
