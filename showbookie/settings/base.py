@@ -19,6 +19,8 @@ ADMINS = (
     ('Mohammad Adil', 'mmadil_14@yahoo.com'),
 )
 
+LOGIN_URL = "/accounts/login/"
+
 MANAGERS = ADMINS
 
 ALLOWED_HOSTS = []
