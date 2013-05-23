@@ -2,3 +2,4 @@
 *.swp
 *.db
 uploads/*
+showbookie/settings/local_settings.py
