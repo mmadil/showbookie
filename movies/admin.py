@@ -3,7 +3,7 @@ from .models import Timing, Movie
 
 class MovieAdmin(admin.ModelAdmin):
     date_hierarchy = "start_date"
-    fields = ('title', 'slug', 'photo', 'description', 'seats', 'start_date', 'end_date', 'timings', 'published', 'enable_comments')
+    fields = ('title', 'slug', 'photo', 'description', 'start_date', 'end_date', 'timings', 'published', 'enable_comments')
     list_display = ['published', 'title', 'start_date', 'end_date']
     list_display_links = ['title']
     list_editable = ['published',]
