@@ -14,15 +14,26 @@
 Number of seats left :<h3> {{ movie.seats }}</h3>
 Starting from : <h3>{{ movie.start_date }}</h3>
 Ending on : <h3>{{ movie.end_date}}</h3>
-<a class="btn btn-primary btn-large" href="#">Buy Tickets</a>
 <hr>
 {% get_comment_count for movie as comment_count %}
-<p>This movie has {{ comment_count }} reviews.</p>
+<h3>This movie has {{ comment_count }} reviews.</h3>
 {% render_comment_list for movie %}
-{% get_comment_list for movie as comment_list %}
-{% for comment in comment_list %}
-  <p> {{ comment.user_name }} says </p>
-  <p> {{ comment.comment }} </p>
-  <p> at {{ comment.submit_date }}
-{% endfor %}
+{% if user.is_authenticated %}
+{% get_comment_form for object as form %}
+<div class="span5">
+<form action="{% comment_form_target %}" method="POST">
+  {% csrf_token %}
+  Your Experience ( in one word ): {{ form.experience }}
+  Review : {{ form.comment }}
+  {{ form.content_type }}
+  {{ form.object_pk }}
+  {{ form.timestamp }}
+  {{ form.security_hash }}
+  <input type="hidden" name="next" value="{{ movie.get_absolute_url }}" />
+  <button type="submit" class="btn btn-primary"><i class="icon-comment"></i> Submit</button>
+</form>
+</div>
+{% else %}
+<p>Please <a href="/accounts/login/">log in</a> to share your experience after watching -  {{ movie.title }}.</p>
+{% endif %}
 {% endblock %}

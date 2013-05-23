@@ -26,8 +26,7 @@
         <h3>{{ movie.title }}</h3>
         <p>{{ movie.description|slice:'200'|linebreaks }}</p>
         <p>
-          <a class="btn btn-primary" href="#">Buy Tickets</a>
-          <a class="btn" href="{{ movie.get_absolute_url }}">Checkout</a>
+          <a class="btn" href="{{ movie.get_absolute_url }}">Checkout and add a review</a>
         </p>
         </li>
       </li>
