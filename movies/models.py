@@ -17,7 +17,6 @@ class Movie(models.Model):
     photo = models.ImageField(upload_to="images/")
     description = models.TextField()
     published = models.BooleanField(default=True)
-    seats = models.IntegerField(default=120)
     start_date = models.DateTimeField()
     end_date = models.DateTimeField()
     timings = models.ManyToManyField(Timing)
