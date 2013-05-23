@@ -5,4 +5,4 @@ class UserExperience(Comment):
     experience = models.CharField('User Experience', max_length=20)
 
     def __unicode__(self):
-        return self.user.username
+        return self.user
