@@ -6,6 +6,7 @@ from django.conf.urls.static import static
 admin.autodiscover()
 
 from . import views
+from movies.views import MovieListView
 
 urlpatterns = patterns('',
     url(r'^$', views.HomepageView.as_view(), name='home'),
@@ -14,4 +15,5 @@ urlpatterns = patterns('',
     url(r'^accounts/', include('registration.backends.simple.urls')),
     url(r'^accounts/profile/', include('profiles.urls', namespace='profiles')),
     url(r'^movies/', include('movies.urls', namespace='movies')),
+    url(r'^all/$', MovieListView.as_view(), name='list'),
 ) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

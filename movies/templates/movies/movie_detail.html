@@ -4,16 +4,18 @@
 
 {% block page_title %} {{ movie.title }} | {% endblock %}
 {% block page_header %} Details{% endblock %}
+{% block message %}
+<h3> <a href="{{ movie.get_absolute_url }}">{{ movie.title }}</a></h3>
+{% endblock %}
 {% block content %}
-<div class="page-header">
-  <h3> <a href="{{ movie.get_absolute_url }}">{{ movie.title }}</a></h3>
-</div>
 <img class="thumbnail" data-src="holder.js/360x270" src="{{ MEDIA_URL }}{{ movie.photo }}">
 <p>{{ movie.description|linebreaks }}</p>
 <hr>
 Starting from : <h3>{{ movie.start_date }}</h3>
 Ending on : <h3>{{ movie.end_date}}</h3>
 <hr>
+<div class="row-fluid">
+  <div class="span12">
 {% get_comment_count for movie as comment_count %}
 <h3>This movie has {{ comment_count }} reviews.</h3>
 {% render_comment_list for movie %}
@@ -22,8 +24,8 @@ Ending on : <h3>{{ movie.end_date}}</h3>
 <div class="span5">
 <form action="{% comment_form_target %}" method="POST">
   {% csrf_token %}
-  Your Experience ( in one word ): {{ form.experience }}
-  Review : {{ form.comment }}
+  <p>Your Experience ( in one word ):</p> {{ form.experience }}
+  <p>Review : </p>{{ form.comment }}
   {{ form.content_type }}
   {{ form.object_pk }}
   {{ form.timestamp }}
@@ -31,6 +33,8 @@ Ending on : <h3>{{ movie.end_date}}</h3>
   <input type="hidden" name="next" value="{{ movie.get_absolute_url }}" />
   <button type="submit" class="btn btn-primary"><i class="icon-comment"></i> Submit</button>
 </form>
+</div>
+</div>
 </div>
 {% else %}
 <p>Please <a href="/accounts/login/">log in</a> to share your experience after watching -  {{ movie.title }}.</p>
