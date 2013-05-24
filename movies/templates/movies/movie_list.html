@@ -1,0 +1,36 @@
+{% extends "_layouts/base.html" %}
+{% load url from future %}
+
+{% block page_title %}Welcome to {% endblock %}
+{% block page_header %}Welcome {% endblock %}
+
+{% block extra_style %}
+.thumbnails li{ line-height:20px; }
+.thumbnails {
+  margin:auto;
+}
+{% endblock %}
+
+{% block content %}
+<div class="page-header">
+  <h2>All Movies</h2>
+</div>
+  {% for movie in movies %}
+  <ul class="thumbnails">
+    {% if movie.published %}
+      <li class="span5">
+      <a href="{{ movie.get_absolute_url }}" class="thumbnail">
+        <img data-src="holder.js/300x200" style="width: 300px; height: 200px;" src="{{ MEDIA_URL }}{{ movie.photo }}">
+      </a>
+      <li class="span6">
+        <h3>{{ movie.title }}</h3>
+        <p>{{ movie.description|slice:'200'|linebreaks }}</p>
+        <p>
+          <a class="btn" href="{{ movie.get_absolute_url }}">Checkout and add a review</a>
+        </p>
+        </li>
+      </li>
+    {% endif %}
+</ul>
+  {% endfor %}
+{% endblock %}
