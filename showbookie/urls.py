@@ -7,6 +7,7 @@ admin.autodiscover()
 
 from . import views
 from movies.views import MovieListView
+from profiles.views import ProfileUpdateView
 
 urlpatterns = patterns('',
     url(r'^$', views.HomepageView.as_view(), name='home'),

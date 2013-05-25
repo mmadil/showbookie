@@ -20,7 +20,7 @@
      <h4>Birth Date : </h4>
      <p class="text-right">{{ user.userprofile.birth_date }}</p>
    </div>
-   <div class="span4 offset1">
+   <div class="span3 offset2">
      <img data-src="holder.js/260x180" style="width:150px; height: 250px;" src="{{ MEDIA_URL }}{{ user.userprofile.profile_picture }}">
        <h4>Links</h4>
         {% if user.userprofile.facebook %}
@@ -37,6 +37,6 @@
      <p class="">{{ user.userprofile.bio }}</p>
    </div>
  </div>
- <h1>Recent Activities</h1>
  <hr>
+ <h1>Recent Activities</h1>
 {% endblock %}
