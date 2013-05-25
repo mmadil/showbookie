@@ -8,7 +8,6 @@ django-bootstrap-forms==0.1
 django-debug-toolbar==0.9.4
 django-ratings==0.3.7
 django-registration==0.8
-gunicorn==0.17.2
-ipython==0.13.2
+gunicorn
 psycopg2==2.4.6
 wsgiref==0.1.2
