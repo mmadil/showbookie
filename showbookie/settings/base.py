@@ -121,9 +121,11 @@ DJANGO_APPS = (
     'django.contrib.comments',
 )
 
+COMMENTS_APP = 'reviews'
+
 LOCAL_APPS = (
-    'movies',
     'reviews',
+    'movies',
     'profiles',
 )
 
@@ -133,8 +135,6 @@ THIRD_PARTY_APPS = (
     'registration',
 #    'djangoratings',
 )
-
-COMMENTS_APP = 'reviews'
 
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS 
 
