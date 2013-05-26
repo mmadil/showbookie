@@ -10,7 +10,7 @@ root = lambda * x: os.path.join(os.path.abspath(PROJECT_ROOT), *x)
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
-PRODUCTION = True
+#PRODUCTION = True
 
 ADMINS = (
     ('Mohammad Adil', 'mmadil_14@yahoo.com'),
