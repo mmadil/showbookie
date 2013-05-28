@@ -9,7 +9,6 @@ class UserProfile(models.Model):
     facebook = models.CharField('Facebook Username', max_length=30, blank=True, default='')
     twitter = models.CharField('Twitter Username', max_length=30, blank=True, default='')
 
-    # To add purchase details once. The purchase model is completed.
-
     def __unicode__(self):
         return self.user.username
+
