@@ -6,9 +6,6 @@ here = lambda * x: os.path.join(os.path.abspath(os.path.dirname(__file__)), *x)
 PROJECT_ROOT = here('..')
 root = lambda * x: os.path.join(os.path.abspath(PROJECT_ROOT), *x)
 
-
-from registration_defaults.settings import *
-
 # Django settings for showbookie project.
 
 DEBUG = False
@@ -23,7 +20,7 @@ LOGIN_URL = "/accounts/login/"
 
 MANAGERS = ADMINS
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*',]
 #INTERNAL_IPS = ('127.0.0.1',)
 
 COMMENTS_HIDE_REMOVED = True
@@ -42,7 +39,6 @@ MEDIA_ROOT = root('..','uploads')
 MEDIA_URL = '/uploads/'
 
 STATIC_ROOT = root('..','static')
-STATIC_URL = '/static/'
 
 STATICFILES_DIRS = (
         root('..','assets'),
@@ -78,29 +74,12 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 
 MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
-    'debug_toolbar.middleware.DebugToolbarMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
-
-#DEBUG_TOOLBAR_PANELS = (
-#    'debug_toolbar.panels.version.VersionDebugPanel',
-#    'debug_toolbar.panels.timer.TimerDebugPanel',
-#    'debug_toolbar.panels.settings_vars.SettingsVarsDebugPanel',
-#    'debug_toolbar.panels.headers.HeaderDebugPanel',
-#    'debug_toolbar.panels.request_vars.RequestVarsDebugPanel',
-#    'debug_toolbar.panels.template.TemplateDebugPanel',
-#    'debug_toolbar.panels.sql.SQLDebugPanel',
-#    'debug_toolbar.panels.signals.SignalDebugPanel',
-#    'debug_toolbar.panels.logger.LoggingPanel',
-#)
-
-#DEBUG_TOOLBAR_CONFIG = {
-#    'INTERCEPT_REDIRECTS' : False,
-#}
 
 SESSION_ENGINE = 'django.contrib.sessions.backends.signed_cookies'
 
@@ -116,25 +95,23 @@ DJANGO_APPS = (
     'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'registration_defaults',
-    'django.contrib.admin',
     'django.contrib.comments',
+    'django.contrib.admin',
 )
 
+COMMENTS_APP = 'reviews'
+
 LOCAL_APPS = (
-    'movies',
     'reviews',
+    'movies',
     'profiles',
 )
 
 THIRD_PARTY_APPS = (
     'south',
-#    'debug_toolbar',
     'registration',
 #    'djangoratings',
 )
-
-COMMENTS_APP = 'reviews'
 
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS 
 
@@ -176,4 +153,9 @@ try:
     from local_settings import *
 except ImportError:
     pass
+
+if PRODUCTION:
+    STATIC_URL = 'https://googledrive.com/host/0B-gIhJMz12BtVVBPRHBhdjFPZkk/'
+else:
+    STATIC_URL = '/static/'
 

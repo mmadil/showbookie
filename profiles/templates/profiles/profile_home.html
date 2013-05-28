@@ -38,5 +38,22 @@
    </div>
  </div>
  <hr>
+<<<<<<< HEAD
  <h1>Recent Activities</h1>
+=======
+ <div class="row-fluid">
+   <div class="span5 offset1">
+     <h4>Reviews ({{ comment_count }})</h4>
+     {% for review in comments %}
+       <p>{{ review }}</p>
+     {% endfor %}
+     {% if comments > comment_count %}
+       <a href="#">View Every Review</a>
+     {% endif %}
+   </div>
+   <div class="span5 offset1">
+     <h4>Ratings</h4>
+   </div>
+ </div>
+>>>>>>> development
 {% endblock %}
