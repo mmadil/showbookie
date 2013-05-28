@@ -47,7 +47,7 @@
      {% for review in comments %}
      <blockquote>
        <p><strong>{{ review.userexperience.experience }} </strong> <small class="muted pull-right"> {{ review.submit_date }}</small></p>
-       <p>for <a href="{% get_comment_permalink review %}">This movie</a></p>
+       <p>for <a href="{% get_comment_permalink review %}">this movie</a></p>
        <p> {{ review.comment }}</p>
      </blockquote>
      {% endfor %}
@@ -55,7 +55,7 @@
        <a href="#" class="pull-right">View Every Review</a>
      {% endif %}
    </div>
-   <div class="span12 offset1">
+   <div class="span10 offset1">
      <h3>Ratings</h3>
    </div>
  </div>
