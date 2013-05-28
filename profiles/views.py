@@ -13,12 +13,6 @@ class ProfileHomepageView(TemplateView):
     model = User
     template_name = "profiles/profile_home.html"
 
-<<<<<<< HEAD
-class ProfileUpdateView(UpdateView):
-    model = User
-    template_name = "profiles/update_form.html"
-=======
-
     def get_context_data(self, **kwargs):
         context = super(ProfileHomepageView, self).get_context_data(**kwargs)
         user = get_object_or_404(User, username = self.request.user.username)
@@ -27,4 +21,9 @@ class ProfileUpdateView(UpdateView):
         return context
 
 
->>>>>>> development
+class ProfileUpdateView(UpdateView):
+    model = User
+    template_name = "profiles/update_form.html"
+
+
+

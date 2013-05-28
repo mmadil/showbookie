@@ -1,5 +1,6 @@
 {% extends "_layouts/base.html" %}
 {% load url from future %}
+{% load comments %}
 
 {% block page_title %} {{ user.username }}'s profile | {% endblock %}
 {% block headline %}Welcome, {{ user.username }}{% endblock %}
@@ -38,22 +39,24 @@
    </div>
  </div>
  <hr>
-<<<<<<< HEAD
  <h1>Recent Activities</h1>
-=======
+ <hr>
  <div class="row-fluid">
-   <div class="span5 offset1">
-     <h4>Reviews ({{ comment_count }})</h4>
+   <div class="span10 offset1">
+     <h3>Reviews ({{ comment_count }})</h3>
      {% for review in comments %}
-       <p>{{ review }}</p>
+     <blockquote>
+       <p><strong>{{ review.userexperience.experience }} </strong> <small class="muted pull-right"> {{ review.submit_date }}</small></p>
+       <p>for <a href="{% get_comment_permalink review %}">This movie</a></p>
+       <p> {{ review.comment }}</p>
+     </blockquote>
      {% endfor %}
      {% if comments > comment_count %}
-       <a href="#">View Every Review</a>
+       <a href="#" class="pull-right">View Every Review</a>
      {% endif %}
    </div>
-   <div class="span5 offset1">
-     <h4>Ratings</h4>
+   <div class="span12 offset1">
+     <h3>Ratings</h3>
    </div>
  </div>
->>>>>>> development
 {% endblock %}

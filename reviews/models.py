@@ -6,6 +6,3 @@ class UserExperience(Comment):
 
 #    def __unicode__(self):
 #        return self.user
-
-    class Meta:
-        get_latest_by = '-submit_date'
