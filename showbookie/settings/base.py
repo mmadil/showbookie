@@ -8,9 +8,9 @@ root = lambda * x: os.path.join(os.path.abspath(PROJECT_ROOT), *x)
 
 # Django settings for showbookie project.
 
-DEBUG = True
+DEBUG = False
 TEMPLATE_DEBUG = DEBUG
-#PRODUCTION = True
+PRODUCTION = True
 
 ADMINS = (
     ('Mohammad Adil', 'mmadil_14@yahoo.com'),
@@ -39,7 +39,6 @@ MEDIA_ROOT = root('..','uploads')
 MEDIA_URL = '/uploads/'
 
 STATIC_ROOT = root('..','static')
-STATIC_URL = '/static/'
 
 STATICFILES_DIRS = (
         root('..','assets'),
@@ -155,4 +154,9 @@ try:
     from local_settings import *
 except ImportError:
     pass
+
+if PRODUCTION:
+    STATIC_URL = 'https://googledrive.com/host/0B-gIhJMz12BtVVBPRHBhdjFPZkk/'
+else:
+    STATIC_URL = '/static/'
 
