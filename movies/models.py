@@ -1,8 +1,9 @@
 from django.db import models
 from django.template.defaultfilters import slugify
 
+from ratings.handlers import ratings, RatingHandler
+from ratings.forms import StarVoteForm
 from django.contrib.comments.moderation import CommentModerator, moderator
-from djangoratings.fields import RatingField
 
 class Timing(models.Model):
     time = models.TimeField()
@@ -21,8 +22,6 @@ class Movie(models.Model):
     end_date = models.DateTimeField()
     timings = models.ManyToManyField(Timing)
     enable_comments = models.BooleanField(default=True)
-    user_rating = RatingField(range=5, can_change_vote=True, allow_anonymous=False, use_cookies=True, allow_delete=True)
-    anon_rating = RatingField(range=5, weight=10, can_change_vote=False, allow_anonymous=True, use_cookies=False)
 
     # To add ratings using Django Ratings.
 
@@ -41,10 +40,7 @@ class Movie(models.Model):
     def get_absolute_url(self):
         return("movies:detail", (), {"slug":self.slug})
 
-
-#class MovieCommentModerator(CommentModerator):
-#    email_notification = False
-#    auto_close_field = "start_date"
-#    close_after = 31
-
-#moderator.register(Movie, MovieCommentModerator)
+ratings.register(Movie, RatingHandler,
+        score_range=(0, 5), 
+        allow_anonymous=False, can_delete_vote=False,
+        form_class=StarVoteForm)

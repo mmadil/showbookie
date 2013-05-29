@@ -6,6 +6,7 @@ here = lambda * x: os.path.join(os.path.abspath(os.path.dirname(__file__)), *x)
 PROJECT_ROOT = here('..')
 root = lambda * x: os.path.join(os.path.abspath(PROJECT_ROOT), *x)
 
+
 # Django settings for showbookie project.
 
 DEBUG = False
@@ -21,10 +22,13 @@ LOGIN_URL = "/accounts/login/"
 MANAGERS = ADMINS
 
 ALLOWED_HOSTS = ['*',]
-#INTERNAL_IPS = ('127.0.0.1',)
+
+GENERIC_RATINGS_ALL_ANONYMOUS = False
+GENERIC_RATINGS_SCORE_RANGE = (1, 5)
+GENERIC_RATINGS_SCORE_STEP = 1
+GENERIC_RATINGS_DEFAULT_KEY = 'main'
 
 COMMENTS_HIDE_REMOVED = True
-
 REGISTRATION_OPEN = True
 
 TIME_ZONE = 'Asia/Kolkata'
@@ -69,8 +73,10 @@ TEMPLATE_CONTEXT_PROCESSORS = (
         'django.core.context_processors.media',
         'django.core.context_processors.request',
         'django.core.context_processors.static',
-        'showbookie.context_processors.all_movies',
 )
+
+
+
 
 MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
@@ -110,7 +116,7 @@ LOCAL_APPS = (
 THIRD_PARTY_APPS = (
     'south',
     'registration',
-#    'djangoratings',
+    'ratings',
 )
 
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS 
