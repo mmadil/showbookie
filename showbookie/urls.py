@@ -17,5 +17,4 @@ urlpatterns = patterns('',
     url(r'^accounts/profile/', include('profiles.urls', namespace='profiles')),
     url(r'^movies/', include('movies.urls', namespace='movies')),
     url(r'^all/$', MovieListView.as_view(), name='list'),
-    url(r'^ratings/', include('ratings.urls', namespace='votes')),
 ) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

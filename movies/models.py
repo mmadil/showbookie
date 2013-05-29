@@ -1,8 +1,6 @@
 from django.db import models
 from django.template.defaultfilters import slugify
 
-from ratings.handlers import ratings, RatingHandler
-from ratings.forms import StarVoteForm
 from django.contrib.comments.moderation import CommentModerator, moderator
 
 class Timing(models.Model):
@@ -40,7 +38,3 @@ class Movie(models.Model):
     def get_absolute_url(self):
         return("movies:detail", (), {"slug":self.slug})
 
-ratings.register(Movie, RatingHandler,
-        score_range=(0, 5), 
-        allow_anonymous=False, can_delete_vote=False,
-        form_class=StarVoteForm)

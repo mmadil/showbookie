@@ -1,14 +1,6 @@
 {% extends "_layouts/base.html" %}
 {% load url from future %}
 {% load comments %}
-{% load ratings_tags %}
-
-{% block extra_jquery %}
-<link href="{{ STATIC_URL }}/star-rating/jquery.rating.css" rel="stylesheet" type="text/css" />
-<script type="text/javascript" src="{{ STATIC_URL }}star-rating/jquery.MetaData.js"></script>
-<script type="text/javascript" src="{{ STATIC_URL }}star-rating/jquery.rating.js"></script>
-<script type="text/javascript" src="{{ STATIC_URL }}star-rating/application.js"></script>
-{% endblock %}
 
 {% block page_title %} {{ movie.title }} | {% endblock %}
 {% block page_header %} Details{% endblock %}
@@ -41,22 +33,6 @@ Ending on : <h3>{{ movie.end_date}}</h3>
   <input type="hidden" name="next" value="{{ movie.get_absolute_url }}" />
   <button type="submit" class="btn btn-primary"><i class="icon-comment"></i> Submit</button>
 </form>
-</div>
-<div class="span4">
-  {% get_rating_form for movie as rating_form %}
-  <form action="{% url ratings_vote %}" method="post">
-    {% csrf_token %}
-    <p>Vote here :</p>{{ rating_form }}
-    <button type="submit" class="btn btn-primary"><i class="icon-star"></i> Vote</button>
-  </form>
-  {% get_rating_score for movie as score %}
-  {% if score %}
-    <h3>Average score: {{ score.average|floatformat }}</h3>
-    <h3> Number of votes: {{ score.num_votes }}</h3>
-      {% else %}
-    <p>How sad: nobody voted for</p>
-    <p>{{ movie }}</p>
-  {% endif %}
 </div>
 </div>
 </div>
