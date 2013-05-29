@@ -1,0 +1,9 @@
+{% extends "_layouts/base.html" %}
+{% load url from future %}
+
+{% block page_title %} Update {{ user.username }}'s Profile |{% endblock %}
+{% block headline %}Update {% endblock %}
+
+{% block content %}
+{{ form }}
+{% endblock %}

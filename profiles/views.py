@@ -9,6 +9,8 @@ from django.http import HttpResponseRedirect, Http404
 
 from django.views.generic import TemplateView, UpdateView
 
+from .forms import ProfileUpdateForm
+
 class ProfileHomepageView(TemplateView):
     model = User
     template_name = "profiles/profile_home.html"
@@ -22,8 +24,10 @@ class ProfileHomepageView(TemplateView):
 
 
 class ProfileUpdateView(UpdateView):
+    form_class = ProfileUpdateForm
     model = User
-    template_name = "profiles/update_form.html"
+    fields = ['firstname','lastname','email']
+    template_name = "profiles/profile_update.html"
 
 
 

@@ -10,12 +10,15 @@ from . import views
 from movies.views import MovieListView
 from djangoratings.views import AddRatingFromModel
 
+from profiles.views import *
+
 urlpatterns = patterns('',
     url(r'^$', views.HomepageView.as_view(), name='home'),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^comments/', include('django.contrib.comments.urls')),
     url(r'^accounts/', include('registration.backends.simple.urls')),
     url(r'^accounts/profile/', include('profiles.urls', namespace='profiles')),
+    url(r'^accounts/settings/$',login_required(ProfileUpdateView.as_view())),
     url(r'^movies/', include('movies.urls', namespace='movies')),
     url(r'^all/$', MovieListView.as_view(), name='list'),
 ) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
