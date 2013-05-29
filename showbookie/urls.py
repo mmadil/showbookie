@@ -2,12 +2,13 @@ from django.conf.urls import patterns, include, url
 from django.contrib import admin
 from django.conf import settings
 from django.conf.urls.static import static
+from django.contrib.auth.decorators import login_required
 
 admin.autodiscover()
 
 from . import views
 from movies.views import MovieListView
-from profiles.views import ProfileUpdateView
+from djangoratings.views import AddRatingFromModel
 
 urlpatterns = patterns('',
     url(r'^$', views.HomepageView.as_view(), name='home'),
@@ -18,3 +19,18 @@ urlpatterns = patterns('',
     url(r'^movies/', include('movies.urls', namespace='movies')),
     url(r'^all/$', MovieListView.as_view(), name='list'),
 ) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+urlpatterns += patterns('',
+        url(r'ratings/(?P<object_id>\d+)/(?P<score>\d+)/', login_required(AddRatingFromModel()), {
+            'app_label': 'movies',
+            'model': 'movie',
+            'field_name': 'user_rating',
+    }),
+
+        url(r'ratings/(?P<object_id>\d+)/(?P<score>\d+)/', AddRatingFromModel(), {
+            'app_label': 'movies',
+            'model': 'movie',
+            'field_name': 'anon_rating',
+    }),
+)
+

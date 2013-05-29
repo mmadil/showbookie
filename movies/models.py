@@ -1,6 +1,7 @@
 from django.db import models
 from django.template.defaultfilters import slugify
 
+from djangoratings.fields import RatingField, AnonymousRatingField
 from django.contrib.comments.moderation import CommentModerator, moderator
 
 class Timing(models.Model):
@@ -20,6 +21,8 @@ class Movie(models.Model):
     end_date = models.DateTimeField()
     timings = models.ManyToManyField(Timing)
     enable_comments = models.BooleanField(default=True)
+    user_rating = RatingField(range=5, can_change_vote=False, allow_delete=False, allow_anonymous=False)
+    anon_rating = AnonymousRatingField(range=5, allow_delete=False, allow_anonymous=True, use_cookies=True)
 
     # To add ratings using Django Ratings.
 

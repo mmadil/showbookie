@@ -1,6 +1,7 @@
 {% extends "_layouts/base.html" %}
 {% load url from future %}
 {% load comments %}
+{% load ratings %}
 
 {% block page_title %} {{ movie.title }} | {% endblock %}
 {% block page_header %} Details{% endblock %}
@@ -17,11 +18,11 @@ Ending on : <h3>{{ movie.end_date}}</h3>
 <div class="row-fluid">
   <div class="span12">
 {% get_comment_count for movie as comment_count %}
-<h3>This movie has {{ comment_count }} reviews.</h3>
 {% render_comment_list for movie %}
 {% if user.is_authenticated %}
 {% get_comment_form for object as form %}
 <div class="span5 offset1">
+<h3>This movie has {{ comment_count }} reviews.</h3>
 <form action="{% comment_form_target %}" method="POST">
   {% csrf_token %}
   <p>Your Experience ( in one word ):</p> {{ form.experience }}
@@ -30,9 +31,26 @@ Ending on : <h3>{{ movie.end_date}}</h3>
   {{ form.object_pk }}
   {{ form.timestamp }}
   {{ form.security_hash }}
+  {{ movie.movie_id }}
   <input type="hidden" name="next" value="{{ movie.get_absolute_url }}" />
   <button type="submit" class="btn btn-primary"><i class="icon-comment"></i> Submit</button>
 </form>
+</div>
+<div class="span4">
+  <h3>Votes</h3>
+  {% rating_by_request request on movie.user_rating  as vote %}
+  <h3>{{ vote }}</h3>
+  {% if vote > 0 %}
+  <p>You've already voted</p>
+  {% else %}
+      <div class="btn-group">
+        <a class="btn" href="/ratings/{{ movie.pk }}/1"><i class="icon-star"></i> 1</a>
+        <a class="btn" href="/ratings/{{ movie.pk }}/2"><i class="icon-star"></i> 2</a>
+        <a class="btn" href="/ratings/{{ movie.pk }}/3"><i class="icon-star"></i> 3</a>
+        <a class="btn" href="/ratings/{{ movie.pk }}/4"><i class="icon-star"></i> 4</a>
+        <a class="btn" href="/ratings/{{ movie.pk }}/5"><i class="icon-star"></i> 5</a>
+      </div>
+  {% endif %}
 </div>
 </div>
 </div>

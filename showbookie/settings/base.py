@@ -26,6 +26,8 @@ ALLOWED_HOSTS = ['*',]
 COMMENTS_HIDE_REMOVED = True
 REGISTRATION_OPEN = True
 
+RATINGS_VOTES_PER_IP = 3
+
 TIME_ZONE = 'Asia/Kolkata'
 LANGUAGE_CODE = 'en-us'
 SITE_ID = 1
@@ -111,6 +113,7 @@ LOCAL_APPS = (
 THIRD_PARTY_APPS = (
     'south',
     'registration',
+    'djangoratings',
 )
 
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS 
