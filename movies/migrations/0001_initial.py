@@ -23,14 +23,11 @@ class Migration(SchemaMigration):
             ('photo', self.gf('django.db.models.fields.files.ImageField')(max_length=100)),
             ('description', self.gf('django.db.models.fields.TextField')()),
             ('published', self.gf('django.db.models.fields.BooleanField')(default=True)),
-            ('seats', self.gf('django.db.models.fields.IntegerField')(default=120)),
             ('start_date', self.gf('django.db.models.fields.DateTimeField')()),
             ('end_date', self.gf('django.db.models.fields.DateTimeField')()),
             ('enable_comments', self.gf('django.db.models.fields.BooleanField')(default=True)),
             ('user_rating_votes', self.gf('django.db.models.fields.PositiveIntegerField')(default=0, blank=True)),
             ('user_rating_score', self.gf('django.db.models.fields.IntegerField')(default=0, blank=True)),
-            ('anon_rating_votes', self.gf('django.db.models.fields.PositiveIntegerField')(default=0, blank=True)),
-            ('anon_rating_score', self.gf('django.db.models.fields.IntegerField')(default=0, blank=True)),
         ))
         db.send_create_signal('movies', ['Movie'])
 
@@ -57,15 +54,12 @@ class Migration(SchemaMigration):
     models = {
         'movies.movie': {
             'Meta': {'ordering': "['-start_date', 'title']", 'object_name': 'Movie'},
-            'anon_rating_score': ('django.db.models.fields.IntegerField', [], {'default': '0', 'blank': 'True'}),
-            'anon_rating_votes': ('django.db.models.fields.PositiveIntegerField', [], {'default': '0', 'blank': 'True'}),
             'description': ('django.db.models.fields.TextField', [], {}),
             'enable_comments': ('django.db.models.fields.BooleanField', [], {'default': 'True'}),
             'end_date': ('django.db.models.fields.DateTimeField', [], {}),
             'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
             'photo': ('django.db.models.fields.files.ImageField', [], {'max_length': '100'}),
             'published': ('django.db.models.fields.BooleanField', [], {'default': 'True'}),
-            'seats': ('django.db.models.fields.IntegerField', [], {'default': '120'}),
             'slug': ('django.db.models.fields.SlugField', [], {'default': "''", 'max_length': '255', 'blank': 'True'}),
             'start_date': ('django.db.models.fields.DateTimeField', [], {}),
             'timings': ('django.db.models.fields.related.ManyToManyField', [], {'to': "orm['movies.Timing']", 'symmetrical': 'False'}),

@@ -11,8 +11,8 @@ class Migration(SchemaMigration):
         # Adding model 'UserExperience'
         db.create_table('reviews_userexperience', (
             ('comment_ptr', self.gf('django.db.models.fields.related.OneToOneField')(to=orm['comments.Comment'], unique=True, primary_key=True)),
+            ('movie', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['movies.Movie'])),
             ('experience', self.gf('django.db.models.fields.CharField')(max_length=20)),
-            ('which_movie', self.gf('django.db.models.fields.related.OneToOneField')(to=orm['movies.Movie'], unique=True)),
         ))
         db.send_create_signal('reviews', ['UserExperience'])
 
@@ -77,15 +77,12 @@ class Migration(SchemaMigration):
         },
         'movies.movie': {
             'Meta': {'ordering': "['-start_date', 'title']", 'object_name': 'Movie'},
-            'anon_rating_score': ('django.db.models.fields.IntegerField', [], {'default': '0', 'blank': 'True'}),
-            'anon_rating_votes': ('django.db.models.fields.PositiveIntegerField', [], {'default': '0', 'blank': 'True'}),
             'description': ('django.db.models.fields.TextField', [], {}),
             'enable_comments': ('django.db.models.fields.BooleanField', [], {'default': 'True'}),
             'end_date': ('django.db.models.fields.DateTimeField', [], {}),
             'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
             'photo': ('django.db.models.fields.files.ImageField', [], {'max_length': '100'}),
             'published': ('django.db.models.fields.BooleanField', [], {'default': 'True'}),
-            'seats': ('django.db.models.fields.IntegerField', [], {'default': '120'}),
             'slug': ('django.db.models.fields.SlugField', [], {'default': "''", 'max_length': '255', 'blank': 'True'}),
             'start_date': ('django.db.models.fields.DateTimeField', [], {}),
             'timings': ('django.db.models.fields.related.ManyToManyField', [], {'to': "orm['movies.Timing']", 'symmetrical': 'False'}),
@@ -102,7 +99,7 @@ class Migration(SchemaMigration):
             'Meta': {'ordering': "('submit_date',)", 'object_name': 'UserExperience', '_ormbases': ['comments.Comment']},
             'comment_ptr': ('django.db.models.fields.related.OneToOneField', [], {'to': "orm['comments.Comment']", 'unique': 'True', 'primary_key': 'True'}),
             'experience': ('django.db.models.fields.CharField', [], {'max_length': '20'}),
-            'which_movie': ('django.db.models.fields.related.OneToOneField', [], {'to': "orm['movies.Movie']", 'unique': 'True'})
+            'movie': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['movies.Movie']"})
         },
         'sites.site': {
             'Meta': {'ordering': "('domain',)", 'object_name': 'Site', 'db_table': "'django_site'"},
