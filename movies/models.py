@@ -22,7 +22,6 @@ class Movie(models.Model):
     timings = models.ManyToManyField(Timing)
     enable_comments = models.BooleanField(default=True)
     user_rating = RatingField(range=5, can_change_vote=False, allow_delete=False, allow_anonymous=False)
-    anon_rating = AnonymousRatingField(range=5, allow_delete=False, allow_anonymous=True, use_cookies=True)
 
     # To add ratings using Django Ratings.
 

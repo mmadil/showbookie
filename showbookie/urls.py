@@ -26,11 +26,5 @@ urlpatterns += patterns('',
             'model': 'movie',
             'field_name': 'user_rating',
     }),
-
-        url(r'ratings/(?P<object_id>\d+)/(?P<score>\d+)/', AddRatingFromModel(), {
-            'app_label': 'movies',
-            'model': 'movie',
-            'field_name': 'anon_rating',
-    }),
 )
 
