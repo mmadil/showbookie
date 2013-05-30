@@ -72,10 +72,24 @@
       
       <div class="jumbotron">
         <h1>{% block headline %}{% endblock %}</h1>
-        <p class="lead">{% block message %}{% endblock %}</p>
+        <p class="lead">
+        {% block messages %}
+        {% if messages %}
+        <div class="container">
+         {% for message in messages %}
+          <div class="message alert alert-{% if message.tags %}{{ message.tags }}{% endif %}">
+           <button type="button" class="close" data-dismiss="alert">x</button>
+           {{ message }}
+          </div>
+         {% endfor %}
+        </div>
+        {% endif %}
+        {% endblock %}
+        {% block message %}
+	      {% endblock %}
+        </p>
         {% block custom_button %}{% endblock %}
       </div>
-      
       <hr>
     {% endblock %}
     {% block content %}{% endblock %}

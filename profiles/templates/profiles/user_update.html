@@ -1,0 +1,16 @@
+{% extends "_layouts/base.html" %}
+{% load url from future %}
+{% block page_title %}Edit account | {% endblock %}
+{% block headline %}Edit account {% endblock %}
+
+
+{% block content %}
+<div class="row-fluid">
+<div class="span5 offset4">
+  <form action="" method="post">{% csrf_token %}
+    {{ form.as_p }}
+    <button class="btn btn-primary"><i class="icon-save"></i> Save</button>
+  </form>
+</div>
+</div>
+{% endblock %}

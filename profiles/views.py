@@ -6,6 +6,7 @@ from reviews.models import UserExperience
 
 from django.shortcuts import get_object_or_404
 from django.core.urlresolvers import reverse_lazy, reverse
+from django.contrib import messages
 from django.http import HttpResponseRedirect, Http404
 
 from django.views.generic import DetailView, TemplateView, UpdateView, RedirectView
@@ -42,7 +43,7 @@ class UserUpdateView(LoginRequiredMixin, PermissionRequiredMixin, UpdateView):
     model = User
     form_class = UserUpdateForm
     template_name = "profiles/user_update.html"
-    permission_required = "auth.change-user"
+    permission_required = "auth.change_user"
 
     def get_object(self):
         return self.request.user
