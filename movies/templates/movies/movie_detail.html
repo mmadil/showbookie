@@ -38,7 +38,7 @@ Ending on : <h3>{{ movie.end_date}}</h3>
 </div>
 <div class="span4">
   <h3>Votes</h3>
-  {% rating_by_request request on movie.user_rating  as vote %}
+  {% rating_by_request request on movie.user_rating as vote %}
   <h3>{{ vote }}</h3>
   {% if vote > 0 %}
   <p>You've already voted</p>
