@@ -26,7 +26,10 @@ ALLOWED_HOSTS = ['*',]
 COMMENTS_HIDE_REMOVED = True
 REGISTRATION_OPEN = True
 
-RATINGS_VOTES_PER_IP = 3
+# Django registration settings
+LOGIN_REDIRECT_URL = '/profile/'
+
+RATINGS_VOTES_PER_IP = 20
 
 TIME_ZONE = 'Asia/Kolkata'
 LANGUAGE_CODE = 'en-us'
@@ -71,9 +74,6 @@ TEMPLATE_CONTEXT_PROCESSORS = (
         'django.core.context_processors.request',
         'django.core.context_processors.static',
 )
-
-
-
 
 MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
