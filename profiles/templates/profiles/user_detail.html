@@ -22,7 +22,7 @@
      <p class="text-right">{{ userinfo.userprofile.birth_date }}</p>
    </div>
    <div class="span4 offset1">
-     <img data-src="holder.js/260x180" style="width:150px; height: 250px;" src="{{ MEDIA_URL }}{{ userinfo.userprofile.profile_picture }}">
+     <img  class="img-polaroid" data-src="holder.js/260x180" style="width:150px; height: 250px;" src="{{ MEDIA_URL }}{{ userinfo.userprofile.profile_picture }}">
        <h4>Links</h4>
         <ul class="nav nav-pills">
         {% if userinfo.userprofile.facebook %}

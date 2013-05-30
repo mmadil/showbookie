@@ -70,7 +70,6 @@ TEMPLATE_CONTEXT_PROCESSORS = (
         'django.core.context_processors.media',
         'django.core.context_processors.request',
         'django.core.context_processors.static',
-        'showbookie.context_processors.this_week',
 )
 
 
