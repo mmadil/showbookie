@@ -5,8 +5,9 @@ argparse==1.2.1
 distribute==0.6.31
 dj-database-url==0.2.1
 django-bootstrap-forms==0.1
+django-braces==1.0.0
 django-ratings==0.3.7
 django-registration==0.8
-gunicorn
+gunicorn==0.17.2
 psycopg2==2.4.6
 wsgiref==0.1.2
