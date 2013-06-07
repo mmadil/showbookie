@@ -1,6 +1,8 @@
 from django.contrib.auth.models import User
 from django.db import models
 
+from registration.signals import user_registered
+
 class UserProfile(models.Model):
     user = models.OneToOneField(User)
     profile_picture = models.ImageField(upload_to='profile_pictures/', blank=True)
@@ -12,3 +14,8 @@ class UserProfile(models.Model):
     def __unicode__(self):
         return self.user.username
 
+
+def createUserProfile(sender, user, request, **kwargs):
+	user_profile = UserProfile.objects.create(user=user)
+
+user_registered.connect(createUserProfile)

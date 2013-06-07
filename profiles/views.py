@@ -62,7 +62,7 @@ class UserProfileUpdateView(LoginRequiredMixin, PermissionRequiredMixin, UpdateV
         return self.request.user.userprofile
 
     def get_success_url(self):
-        message.success(self.request, "Your profile settings have been saved")
+        messages.success(self.request, "Your profile settings have been saved")
         return reverse_lazy("userprofile_update")
 
 class MyProfileView(LoginRequiredMixin, RedirectView):

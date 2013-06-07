@@ -13,7 +13,7 @@ from djangoratings.views import AddRatingFromModel
 from profiles.views import *
 
 urlpatterns = patterns('',
-    url(r'^$', views.HomepageView.as_view(), name='home'),
+    url(r'^$', views.IndexView, name='home'),
     url(r'^comments/', include('django.contrib.comments.urls')),
     url(r'^movies/', include('movies.urls', namespace='movies')),
     url(r'^all/$', MovieListView.as_view(), name='list'),
@@ -25,6 +25,10 @@ urlpatterns += patterns('',
     url(r'^accounts/', include('registration.backends.simple.urls')),
     url(r'^accounts/settings/core/$', UserUpdateView.as_view(), name='user_update'),
     url(r'^accounts/settings/info/$', UserProfileUpdateView.as_view(), name='userprofile_update'),
+)
+
+urlpatterns += patterns('',
+#    url(r'^users/(?P<username>[\w-]+)/$', UserProfileUpdateView().as_view(), name='userprofile_update'),
 )
 
 urlpatterns += patterns('',

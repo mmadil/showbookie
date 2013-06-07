@@ -10,8 +10,6 @@ class MovieDetailView(DetailView):
     model = Movie
 
 
-
 class MovieListView(ListView):
     model = Movie
     template_name = 'movies/movie_list.html'
-
