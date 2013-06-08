@@ -27,9 +27,15 @@ COMMENTS_HIDE_REMOVED = True
 REGISTRATION_OPEN = True
 
 # Django registration settings
-LOGIN_REDIRECT_URL = '/profile/'
+LOGIN_REDIRECT_URL = '/'
+ABSOLUTE_URL_OVERRIDES = {
+    'auth.user': lambda u:'/profile/%s' % u.username,
+}
 
 RATINGS_VOTES_PER_IP = 20
+
+
+ANONYMOUS_USER_ID = -1
 
 TIME_ZONE = 'Asia/Kolkata'
 LANGUAGE_CODE = 'en-us'
@@ -50,6 +56,11 @@ STATICFILES_DIRS = (
 
 TEMPLATE_DIRS = (
         root('..','templates'),
+)
+
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',
+    'guardian.backends.ObjectPermissionBackend',
 )
 
 STATICFILES_FINDERS = (
@@ -112,6 +123,7 @@ LOCAL_APPS = (
 
 THIRD_PARTY_APPS = (
     'south',
+    'guardian',
     'registration',
     'djangoratings',
 )

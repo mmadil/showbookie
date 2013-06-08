@@ -31,14 +31,14 @@
         {% if userinfo.userprofile.twitter %}
         <li><a href="https://www.twitter.com/{{ userinfo.userprofile.twitter }}" target="_blank"><i class="icon-twitter"></i>  Twitter</a></li>
         {% endif %}
-        {% if perms.auth.change_user or profiles.change_userprofile %}
+        {% ifequal user userprofile.user %}
           {% url 'userprofile_update' as profile %}
           <li><a href="{{ profile }}"><i class="icon-cog"></i> Edit profile</a></li>
           {% url 'user_update' as account %}
           <li><a href="{{ account }}"><i class="icon-cogs"></i> Edit account</a></li>
           {% url 'auth_password_change' as password %}
           <li><a href="{{ password }}"><i class="icon-briefcase"></i> Change password</a></li>
-        {% endif %}
+        {% endifequal %}
         </ul>
     </div>
  </div>
@@ -57,16 +57,10 @@
      {% for review in comments %}
      <blockquote>
        <p><strong>{{ review.userexperience.experience }} </strong> <small class="muted pull-right"> {{ review.submit_date }}</small></p>
-       <p>for <a href="{% get_comment_permalink review %}">this movie</a></p>
+       <p>for <a href="{% get_comment_permalink review %}">{{ review.userexperience.movie }}</a></p>
        <p> {{ review.comment }}</p>
      </blockquote>
      {% endfor %}
-     {% if comment > comment_count %}
-       <a href="#" class="pull-right">View Every Review</a>
-     {% endif %}
-   </div>
-   <div class="span10 offset1">
-     <h3>Ratings</h3>
    </div>
  </div>
 {% endblock %}

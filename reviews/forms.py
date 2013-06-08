@@ -15,6 +15,7 @@ class UserExperienceForm(CommentForm):
     def get_comment_create_data(self):
         data = super(UserExperienceForm, self).get_comment_create_data()
         data['experience'] = self.cleaned_data['experience']
+        data['movie_id'] = self.cleaned_data['object_pk']
         return data
 
 class MovieCommentModerator(CommentModerator):

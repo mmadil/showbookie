@@ -1,6 +1,8 @@
 from django.contrib.auth.models import User
 from django.db import models
-
+    
+from django.dispatch import receiver
+from guardian.shortcuts import assign_perm
 from registration.signals import user_registered
 
 class UserProfile(models.Model):
@@ -17,5 +19,11 @@ class UserProfile(models.Model):
 
 def createUserProfile(sender, user, request, **kwargs):
 	user_profile = UserProfile.objects.create(user=user)
+	from guardian.shortcuts import assign_perm
+
+	assign_perm('profiles.change_userprofile', user, user_profile)
+	assign_perm('profiles.delete_userprofile', user, user_profile)
+	assign_perm('auth.user.change_user', user, user)
 
 user_registered.connect(createUserProfile)
+

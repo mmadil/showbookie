@@ -2,6 +2,7 @@ from .models import UserProfile
 from django.contrib.auth.models import User
 from django.contrib.comments.models import Comment
 
+from movies.models import Movie
 from reviews.models import UserExperience
 
 from django.shortcuts import get_object_or_404
@@ -18,6 +19,8 @@ from .forms import *
 def user_redirect_view(request, username):
     user = get_object_or_404(User, username=username)
     return HttpResponseRedirect(reverse('user_info', kwargs={'username': user.username}))
+
+
 
 
 class UserInfoView(DetailView):
@@ -39,6 +42,8 @@ class UserInfoView(DetailView):
         return context
 
 
+
+
 class UserUpdateView(LoginRequiredMixin, PermissionRequiredMixin, UpdateView):
     model = User
     form_class = UserUpdateForm
@@ -52,6 +57,8 @@ class UserUpdateView(LoginRequiredMixin, PermissionRequiredMixin, UpdateView):
         messages.success(self.request, "Your account settings have been saved")
         return reverse_lazy("user_update")
 
+
+
 class UserProfileUpdateView(LoginRequiredMixin, PermissionRequiredMixin, UpdateView):
     form_class = UserProfileUpdateForm
     model = UserProfile
@@ -64,6 +71,9 @@ class UserProfileUpdateView(LoginRequiredMixin, PermissionRequiredMixin, UpdateV
     def get_success_url(self):
         messages.success(self.request, "Your profile settings have been saved")
         return reverse_lazy("userprofile_update")
+
+
+
 
 class MyProfileView(LoginRequiredMixin, RedirectView):
     permanent = False
