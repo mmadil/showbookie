@@ -73,7 +73,7 @@
       <div class="jumbotron">
         <h1>{% block headline %}{% endblock %}</h1>
         <p class="lead">
-        {% block messages %}
+        {% block message %}
         {% if messages %}
         <div class="container">
          {% for message in messages %}
@@ -84,9 +84,7 @@
          {% endfor %}
         </div>
         {% endif %}
-        {% endblock %}
-        {% block message %}
-	      {% endblock %}
+        {% endblock message %}
         </p>
         {% block custom_button %}{% endblock %}
       </div>

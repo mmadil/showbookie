@@ -21,9 +21,9 @@ def createUserProfile(sender, user, request, **kwargs):
 	user_profile = UserProfile.objects.create(user=user)
 	from guardian.shortcuts import assign_perm
 
-	assign_perm('profiles.change_userprofile', user, user_profile)
-	assign_perm('profiles.delete_userprofile', user, user_profile)
-	assign_perm('auth.user.change_user', user, user)
+	assign_perm('change_userprofile', user, user_profile)
+	assign_perm('delete_userprofile', user, user_profile)
+	assign_perm('change_user', user, user)
 
 user_registered.connect(createUserProfile)
 

@@ -12,7 +12,7 @@ from django.http import HttpResponseRedirect, Http404
 
 from django.views.generic import DetailView, TemplateView, UpdateView, RedirectView
 
-from braces.views import LoginRequiredMixin, PermissionRequiredMixin
+from guardian.mixins import LoginRequiredMixin, PermissionRequiredMixin
 
 from .forms import *
 
