@@ -4,7 +4,7 @@
   {% get_comment_list for movie as comment_list %}
   {% for comment in comment_list %}
    <blockquote>
-     <p>{{ comment.user_name }} <small class="muted pull-right">{{ comment.submit_date }}</small></p>
+     <p><a href="/profile/{{ comment.user }}">{{ comment.user_name }}</a><small class="muted pull-right">{{ comment.submit_date }}</small></p>
      <p><strong> {{ comment.experience }}</strong></p>
      <p class="lead">{{ comment.comment }}</p>
    </blockquote>

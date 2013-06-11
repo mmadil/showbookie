@@ -21,13 +21,16 @@ Rate the movies you love and let others know about it !
           <h3>Now Showing</h3>
           {% for movie in now_showing %}
             <h4><a href="{{ movie.get_absolute_url }}">{{ movie.title }}</a></h4>
+            <img data-src="holder.js/100x100" style="width: 200px; height: 200px " src="{{ MEDIA_URL }}{{ movie.photo }}">
           {% endfor %}
         </div>
 
         <div class="span6">
           <h3>Popular</h3>
           {% for movie in popular %}
-            <h4><a href="{{ movie.get_absolute_url }}">{{ movie.title }}</a></h4>
+          <h4><a href="{{ movie.get_absolute_url }}">{{ movie.title }}</a><p class="muted">{{ movie.user_rating.get_real_percent }} %</p></h4>
+              <img data-src="holder.js/100x100" style="width: 200px; height: 200px " src="{{ MEDIA_URL }}{{ movie.photo }}">
+            </h4>
           {% endfor %}
           </div>
     </div> <!-- /container -->
