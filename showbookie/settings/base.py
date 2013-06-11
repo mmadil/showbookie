@@ -26,6 +26,21 @@ ALLOWED_HOSTS = ['*',]
 COMMENTS_HIDE_REMOVED = True
 REGISTRATION_OPEN = True
 
+# Django Haystack Settings
+
+HAYSTACK_SEARCH_RESULT_PER_PAGE = 20
+
+HAYSTACK_SIGNAL_PROCESSOR = 'haystack.signals.RealtimeSignalProcessor'
+
+HAYSTACK_CONNECTIONS = {
+        'default': {
+            'ENGINE': 'haystack.backends.elasticsearch_backend.ElasticsearchSearchEngine',
+            'URL': 'http://127.0.0.1:9200/',
+            'INDEX_NAME': 'haystack',
+        },
+}
+
+
 # Django registration settings
 LOGIN_REDIRECT_URL = '/'
 ABSOLUTE_URL_OVERRIDES = {
@@ -33,7 +48,6 @@ ABSOLUTE_URL_OVERRIDES = {
 }
 
 RATINGS_VOTES_PER_IP = 20
-
 
 ANONYMOUS_USER_ID = -1
 
@@ -122,7 +136,9 @@ LOCAL_APPS = (
 )
 
 THIRD_PARTY_APPS = (
+    'haystack',
     'south',
+    'braces',
     'guardian',
     'registration',
     'djangoratings',

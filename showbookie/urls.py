@@ -21,14 +21,11 @@ urlpatterns = patterns('',
 
 urlpatterns += patterns('',
     url(r'^admin/', include(admin.site.urls)),
+    url(r'^search/', include('haystack.urls')),
     url(r'^profile/', include('profiles.urls')),
     url(r'^accounts/', include('registration.backends.simple.urls')),
     url(r'^accounts/settings/core/$', UserUpdateView.as_view(), name='user_update'),
     url(r'^accounts/settings/info/$', UserProfileUpdateView.as_view(), name='userprofile_update'),
-)
-
-urlpatterns += patterns('',
-#    url(r'^users/(?P<username>[\w-]+)/$', UserProfileUpdateView().as_view(), name='userprofile_update'),
 )
 
 urlpatterns += patterns('',
